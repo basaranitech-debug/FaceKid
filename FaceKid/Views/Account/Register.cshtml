@@ -1,5 +1,52 @@
-﻿@*
+﻿@model FaceKid.ViewModels.Account.RegisterViewModel
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
+<h2>FaceKid'e katıl!</h2>
+
+<form asp-controller="Account" asp-action="Register" method="post">
+
+    <div asp-validation-summary="All"></div>
+
+    <div class="mb-3">
+
+        <label>AD Soyad</label>
+        <input asp-for="FullName" class="form-control" />
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Şifre</label>
+        <input asp-for="Password" type="password" class="form-control" />
+
+    </div>
+
+    <dib class="mb-3">
+
+        <label>Şifre Tekrar</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control"/>
+
+    </dib>
+
+    <hr/>
+
+    <button type="submit" class="btn btn-primary">
+               Kayıt ol!
+    </button>
+
+    <a asp-controller="Account" asp-action="Login">Zaten hesabım var!</a>
+
+</form>

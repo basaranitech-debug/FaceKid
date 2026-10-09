@@ -30,6 +30,12 @@ namespace FaceKid.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var user = new ApplicationUser
             {
                 UserName = model.Email,
@@ -54,7 +60,7 @@ namespace FaceKid.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-
+                                                   
         [HttpGet]
         public IActionResult Login()
         {
@@ -64,6 +70,12 @@ namespace FaceKid.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var user = await _userManager.FindByEmailAsync(model.Email);
 
             if(user == null)
