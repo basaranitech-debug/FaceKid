@@ -54,10 +54,7 @@ namespace FaceKid.Controllers
                 return View(model);
             }
 
-
-            await _signInManager.SignInAsync(user, isPersistent: false);
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
 
         }
                                                    

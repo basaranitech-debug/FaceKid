@@ -1,14 +1,25 @@
 using FaceKid.Models;
+using FaceKid.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace FaceKid.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IPostService _postService;
+
+        public HomeController(IPostService postService)
         {
-            return View();
+            _postService = postService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var posts = await _postService.GetHomeFeedAsync();
+            return View(posts);
         }
 
         public IActionResult Privacy()
