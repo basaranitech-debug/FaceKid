@@ -1,0 +1,45 @@
+﻿@model List<FaceKid.Entities.Notification>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="dropdown">
+
+    <button class="btn btn-light position-relative" type="button" dat-bs-toggle="dropdown" aria-expanded="false">
+        🔔
+        @if (Model.Any(x => !x.IsRead))
+        {
+            <span class="badge bg-danger">
+                @Model.Count(x => !x.IsRead)
+            </span>
+        }
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" style="width:300px;">
+        <li class="dropdown-header">Bildirimler</li>
+        @if (!Model.Any())
+        {
+            <li>
+                <span class="dropdown-item-text">
+                    Henüz bildirimin yok!
+                </span>
+            </li>
+        }
+        @foreach (var notification in Model)
+        {
+            <li>
+                <div class="dropdown-item-text text-wrap">
+                    <span class="@(notification.IsRead ? "" : "fw-bold")">
+                        @notification.Text
+                    </span>
+                    <small class="d-block text-muted">
+                        @notification.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+                    </small>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+

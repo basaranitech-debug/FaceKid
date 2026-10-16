@@ -12,5 +12,6 @@ namespace FaceKid.Data
         }
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

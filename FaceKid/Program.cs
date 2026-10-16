@@ -22,7 +22,7 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddScoped<IPostService, PostService>();
-
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 var app = builder.Build();
 
