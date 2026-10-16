@@ -6,6 +6,39 @@
 
 <h2>Home Feed</h2>
 
+<div class="card mb-4 shadow-sm">
+
+    <div class="card-body">
+        <h5>Ne düşünüyorsun?</h5>
+
+        <form asp-controller="Home" asp-action="CreatePost" method="post" novalidate>
+
+            @if (TempData["PostError"] != null)
+                {
+                    <div class="text-danger mb-2">
+                    @TempData["PostError"]
+                    </div>
+                }
+
+            <textarea name="Content" class="form-control mb-3" rows="3" maxlength="500" placeholder="Bugün neler paylaşmak istiyorsun?">
+
+            </textarea>
+
+            <div class="text-end">
+
+                <button type="submit" class="btn btn-primary">
+
+                    Paylaş!
+
+                </button>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
 @foreach (var post in Model)
 {
     <div class="card mb-3">
