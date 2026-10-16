@@ -44,11 +44,19 @@
 
                             </button>
 
-                            <div class="dropdown-menu dropdown-menu-end p-3" style="width:280px;">
-                                <h6>Mesajlar</h6>
-                                <hr/>
-                                <p class="text-muted mb-0">Henüz mesajın yok!</p>
-                            </div>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <h6>Mesajlar</h6>
+                                </li>
+                                
+                                <li>
+                                    <button class="dropdown-item" onclick="openChat('1', 'Ayşe Yılmaz')"></button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" onclick="openChat('2', 'Mehmet Demir')"></button>
+                                </li>
+
+                            </ul>
 
                         </div>
 
@@ -78,5 +86,12 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <div id="chatContainer" class="position-fixed bottom-0 end-0 me-4" style="z-index: 1050;">
+        
+    </div>
+
+
 </body>
 </html>
